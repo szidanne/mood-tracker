@@ -57,6 +57,7 @@ function App() {
   };
 
   return (
+    <div className="w-screen">  
     <div className="container mx-auto p-4 max-w-2xl">
       <h1 className="text-3xl font-bold mb-6">Mood Logger</h1>
       
@@ -87,7 +88,7 @@ function App() {
       <div className="space-y-4"> 
         {moods.map((m) => (
           <div key={m.id} className="border p-4 rounded">
-            <div className="flex justify-between items-start">
+            <div className="flex justify-between items-start gap-4">
               <div>
                 <h3 className="font-bold">{m.mood}</h3>
                 {m.note && <p className="text-gray-600">{m.note}</p>}
@@ -113,6 +114,7 @@ function App() {
           </div>
         ))}
       </div>
+    </div>
     </div>
   );
 }
