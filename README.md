@@ -36,7 +36,9 @@ VITE_API_URL=http://backend:8000
 
 ### 3. Run the Application with Docker
 
+```
 docker-compose up --build
+```
 
 This will start:
 - Backend at `http://localhost:8000`
