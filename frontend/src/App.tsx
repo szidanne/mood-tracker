@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { Mood } from './typings/Mood';
 import { moodsService } from './services/moods';
 
+
 function App() {
   const [mood, setMood] = useState<string>('');
   const [note, setNote] = useState<string>(''); 
