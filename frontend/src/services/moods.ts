@@ -2,11 +2,19 @@ import axios from 'axios';
 import { CreateMoodRequest, Mood } from '../typings/Mood';
 
 const API_URL = import.meta.env.VITE_API_URL
+
+console.log(import.meta.env);
+
 export const moodsService = {
   // Get all moods
   async getAll(): Promise<Mood[]> {
-    const response = await axios.get(`${API_URL}/moods`);
-    return response.data;
+    try {
+      const response = await axios.get(`${API_URL}/moods`);
+      return Array.isArray(response.data) ? response.data : [];
+    } catch (error) {
+      console.error('Failed to fetch moods:', error);
+      return [];
+    }
   },
 
   // Get a single mood by ID

@@ -15,9 +15,10 @@ function App() {
   const fetchMoods = async () => {
     try {
       const response = await moodsService.getAll();
-      setMoods(response);
+      setMoods(Array.isArray(response) ? response : []);
     } catch (error) {
       console.error('Failed to fetch moods:', error);
+      setMoods([]);
     }
   };
 
@@ -34,7 +35,6 @@ function App() {
       }
       setMood('');
       setNote('');
-      // Refetch moods instead of manually updating state
       await fetchMoods();
     } catch (error) {
       console.error('Failed to save mood:', error);
@@ -86,7 +86,7 @@ function App() {
       </form>
 
       <div className="space-y-4"> 
-        {moods.map((m) => (
+        {Array.isArray(moods) && moods.map((m) => (
           <div key={m.id} className="border p-4 rounded">
             <div className="flex justify-between items-start gap-4">
               <div>
